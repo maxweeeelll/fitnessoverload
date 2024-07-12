@@ -397,12 +397,12 @@ session_start();
                 <h2>Meet Our Team</h2>
                 <div class="team-members">
                     <div class="team-member">
-                        <img src="https://scontent.fmnl33-2.fna.fbcdn.net/v/t39.30808-6/427949302_7129309950493225_3188446905764732933_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=tzUzgrrYNHgQ7kNvgHVhkZP&_nc_ht=scontent.fmnl33-2.fna&oh=00_AYAygMDoG-jwumcrXf-STliill1Qnq7h_ZGPO0VOCtLGqA&oe=668F65B5" alt="John Doe">
+                        <img src="https://scontent.fmnl33-1.fna.fbcdn.net/v/t39.30808-6/441246758_7485042244919992_7542437159226084213_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YEOWbjFhs9kQ7kNvgFYuCeE&_nc_ht=scontent.fmnl33-1.fna&oh=00_AYAHdS3Yy-ygRh2xAtG4AsuKgJPXx9WFyNHnYFZwfEI-kQ&oe=669755DD" alt="louize">
                         <h3>Louize Noval</h3>
                         <p>Founder & CEO</p>
                     </div>
                     <div class="team-member">
-                        <img src="https://scontent.fmnl33-6.fna.fbcdn.net/v/t39.30808-6/431955582_1168050504566682_1805999593395284543_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JzpUUqGf2oAQ7kNvgFvwyCT&_nc_ht=scontent.fmnl33-6.fna&oh=00_AYBSoF5QzbU0aXIX9d4cceQVS2qhhDo-uvuv4pYU8NS9sA&oe=668F4613" alt="Jane Smith">
+                        <img src="https://scontent.fmnl33-6.fna.fbcdn.net/v/t39.30808-6/431955582_1168050504566682_1805999593395284543_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JdpwGm-gp2MQ7kNvgH3estU&_nc_ht=scontent.fmnl33-6.fna&oh=00_AYB9ZRxpBivcc13bEsQUv6IvyjXmXqcg59GFdbEK4sL-lA&oe=66972F13" alt="russ">
                         <h3>Russ Lacson</h3>
                         <p>Scammer</p>
                     </div>
