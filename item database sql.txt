@@ -10,10 +10,10 @@ VALUES
 
 ('Ultimate Power Rack', 549.99, 'Heavy-duty power rack with adjustable safety bars, multi-grip pull-up bar, and weight plate storage for comprehensive strength training', 'https://gym-mikolo.com/cdn/shop/files/mikolo-power-rack-k6-b-1.png?v=1712113702&width=2000'),
 
-('Yoga Mat', 29.99, 'Non-slip yoga mat, ideal for all types of yoga', 'http://yourgymsite.com/images/yoga-mat.jpg'),
+('Yoga Mat', 29.99, 'Non-slip yoga mat, ideal for all types of yoga', 'https://bridge.velomarket.ee/storage/media/3128/conversions/Joogamatt-Tunturi-Yogamat-8mm-Petrol-Blue1-medium.jpg'),
 
-('Resistance Bands Set', 19.99, 'Set of 5 resistance bands for strength training', 'http://yourgymsite.com/images/resistance-bands.jpg'),
+('Resistance Bands Set', 19.99, 'Set of 5 resistance bands for strength training', 'https://www.gallantsports.co.uk/cdn/shop/files/inteybandsworkouts_1200x1200.jpg?v=1689080690'),
 
-('Kettlebell', 39.99, '10kg cast iron kettlebell for full-body workouts', 'http://yourgymsite.com/images/kettlebell.jpg'),
+('Kettlebell', 39.99, '10kg cast iron kettlebell for full-body workouts', 'https://www.jbsports.com.ph/__resources/webdata/images/products/441.jpg'),
 
-('Foam Roller', 24.99, 'High-density foam roller for muscle recovery and flexibility', 'http://yourgymsite.com/images/foam-roller.jpg');
+('Foam Roller', 24.99, 'High-density foam roller for muscle recovery and flexibility', 'https://i.ebayimg.com/images/g/ioEAAOSw03Jkw9fB/s-l1200.webp');
