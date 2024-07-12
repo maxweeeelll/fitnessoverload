@@ -630,40 +630,38 @@ if (isset($_POST['add_to_cart'])) {
     </nav>
 
     <section class="featured-products" id="featured-products">
-        <h2>Featured Equipment</h2>
-        <div class="product-grid">
-            <?php foreach ($featuredProducts as $product): ?>
-                <div class="product-item" data-category="<?php echo htmlspecialchars($product['category'], ENT_QUOTES); ?>">
-
-                    <div class="product-image-container">
-                        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
-                        <div class="quick-view">
-                            <a href="#" class="view-details">Quick View</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3><?php echo htmlspecialchars($product['name']); ?></h3>
-                        <div class="rating">
-                            <?php 
-                            $rating = isset($product['rating']) ? intval($product['rating']) : 0;
-                            $rating = max(0, min(5, $rating)); // Ensure rating is between 0 and 5
-                            for ($i = 1; $i <= 5; $i++): 
-                            ?>
-                                <i class="fas fa-star<?php echo ($i <= $rating) ? '' : '-o'; ?>"></i>
-                            <?php endfor; ?>
-                        </div>
-                        <p><?php echo htmlspecialchars($product['description']); ?></p>
-                        <p class="product-price">$<?php echo number_format($product['price'], 2); ?></p>
-                        <form method="post" action="">
-                            <input type="hidden" name="item_id" value="<?php echo $product['id']; ?>">
-                            <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
-                            <input type="submit" name="add_to_cart" value="Add to Cart" class="add-to-cart">
-                        </form>
+    <h2>Featured Equipment</h2>
+    <div class="product-grid">
+        <?php foreach ($featuredProducts as $product): ?>
+            <div class="product-item">
+                <div class="product-image-container">
+                    <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                    <div class="quick-view">
+                        <a href="#" class="view-details">Quick View</a>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
+                <div class="product-info">
+                    <h3><?php echo htmlspecialchars($product['name']); ?></h3>
+                    <div class="rating">
+                        <?php 
+                        $rating = isset($product['rating']) ? intval($product['rating']) : 0;
+                        for ($i = 1; $i <= 5; $i++): 
+                        ?>
+                            <i class="fas fa-star<?php echo ($i <= $rating) ? '' : '-o'; ?>"></i>
+                        <?php endfor; ?>
+                    </div>
+                    <p><?php echo htmlspecialchars($product['description']); ?></p>
+                    <p class="product-price">$<?php echo number_format($product['price'], 2); ?></p>
+                    <form method="post" action="" class="add-to-cart-form">
+                        <input type="hidden" name="item_id" value="<?php echo $product['id']; ?>">
+                        <input type="number" name="quantity" value="1" min="1">
+                        <input type="submit" name="add_to_cart" value="Add to Cart" class="add-to-cart">
+                    </form>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
 
     <section class="benefits">
         <div class="benefits-content">
