@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 // Database connection
 $servername = "localhost";
@@ -9,6 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // Fetch items from the database
 $sql = "SELECT * FROM items";
 $result = $conn->query($sql);
@@ -147,8 +151,9 @@ if ($result->num_rows > 0) {
         }
 
         .item-image {
-            max-width: 80px;
-            max-height: 80px;
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: cover;
             border-radius: 5px;
         }
 
@@ -210,7 +215,7 @@ if ($result->num_rows > 0) {
             font-size: 18px;
             color: #777;
         }
-    <</style>
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -225,7 +230,6 @@ if ($result->num_rows > 0) {
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href="cart.php">Cart</a></li>
-
                 </ul>
             </nav>
             <div class="user-actions">
@@ -248,13 +252,22 @@ if ($result->num_rows > 0) {
                 $total = 0;
                 foreach ($_SESSION['cart'] as $item_id => $item): 
                     $total += $item['price'] * $item['quantity'];
+                    
+                    // Fetch the image URL from the $items array
+                    $image_url = isset($items[$item_id]['image_url']) ? $items[$item_id]['image_url'] : '';
                 ?>
                 <tr>
                     <td><?php echo htmlspecialchars($item['name']); ?></td>
                     <td>$<?php echo number_format($item['price'], 2); ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
-                    <td><img src="<?php echo htmlspecialchars($item['image_url'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8'); ?>" class="item-image"></td>
+                    <td>
+                        <?php if (!empty($image_url)): ?>
+                            <img src="<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="item-image">
+                        <?php else: ?>
+                            <span>No image available</span>
+                        <?php endif; ?>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
                 <tr>
@@ -273,10 +286,10 @@ if ($result->num_rows > 0) {
                 <input type="submit" name="checkout" value="Complete Purchase">
             </form>
         <?php else: ?>
-            <p class="empty-cart">Your cart is empty. <a href="#">Continue shopping</a></p>
+            <p class="empty-cart">Your cart is empty. <a href="products.php">Continue shopping</a></p>
         <?php endif; ?>
         
-        <a href="#" class="back-link">
+        <a href="products.php" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Shop
         </a>
     </div>
