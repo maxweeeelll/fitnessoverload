@@ -1,0 +1,19 @@
+INSERT INTO items (name, price, description, image_url)
+VALUES 
+
+('Pro Runner Threadmill', 149.99, 'High-performance treadmill with 15% incline, 20 mph max speed, and built-in workout programs for professional runners and serious enthusiasts', 'https://pngimg.com/d/treadmill_PNG114.png'),
+
+('Adjustable Dumbbell Set', 149.99, '20kg adjustable dumbbell set, perfect for home workouts', 
+'https://t4.ftcdn.net/jpg/06/54/34/49/360_F_654344994_q7YLNLvHbSCzKvr5G5M96rMPwFkeFgZY.jpg'),
+
+('Spin Master Exercise Bike', 799.99, 'Commercial-grade spinning bike with magnetic resistance, 44 lbs flywheel, and LCD console for intense cardio workouts and spinning classes', 'https://www.jbsports.com.ph/__resources/webdata/images/products/327.jpg'),
+
+('Ultimate Power Rack', 549.99, 'Heavy-duty power rack with adjustable safety bars, multi-grip pull-up bar, and weight plate storage for comprehensive strength training', 'https://gym-mikolo.com/cdn/shop/files/mikolo-power-rack-k6-b-1.png?v=1712113702&width=2000'),
+
+('Yoga Mat', 29.99, 'Non-slip yoga mat, ideal for all types of yoga', 'http://yourgymsite.com/images/yoga-mat.jpg'),
+
+('Resistance Bands Set', 19.99, 'Set of 5 resistance bands for strength training', 'http://yourgymsite.com/images/resistance-bands.jpg'),
+
+('Kettlebell', 39.99, '10kg cast iron kettlebell for full-body workouts', 'http://yourgymsite.com/images/kettlebell.jpg'),
+
+('Foam Roller', 24.99, 'High-density foam roller for muscle recovery and flexibility', 'http://yourgymsite.com/images/foam-roller.jpg');
