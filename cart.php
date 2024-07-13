@@ -215,6 +215,23 @@ if ($result->num_rows > 0) {
             font-size: 18px;
             color: #777;
         }
+
+        .payment-options {
+            margin-bottom: 20px;
+        }
+        .payment-options label {
+            margin-right: 20px;
+        }
+        #card-details {
+            display: none;
+            margin-top: 10px;
+        }
+        .thank-you {
+            text-align: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -239,59 +256,90 @@ if ($result->num_rows > 0) {
     </header>
 
     <div class="container">
-        <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
-            <table class="cart-table">
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Image</th>
-                </tr>
-                <?php 
-                $total = 0;
-                foreach ($_SESSION['cart'] as $item_id => $item): 
-                    $total += $item['price'] * $item['quantity'];
-                    
-                    // Fetch the image URL from the $items array
-                    $image_url = isset($items[$item_id]['image_url']) ? $items[$item_id]['image_url'] : '';
-                ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($item['name']); ?></td>
-                    <td>$<?php echo number_format($item['price'], 2); ?></td>
-                    <td><?php echo $item['quantity']; ?></td>
-                    <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
-                    <td>
-                        <?php if (!empty($image_url)): ?>
-                            <img src="<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="item-image">
-                        <?php else: ?>
-                            <span>No image available</span>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <tr>
-                    <td colspan="3"><strong>Total</strong></td>
-                    <td><strong>$<?php echo number_format($total, 2); ?></strong></td>
-                    <td></td>
-                </tr>
-            </table>
+        <?php if (!isset($_POST['checkout'])): ?>
+            <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
+                <table class="cart-table">
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Image</th>
+                    </tr>
+                    <?php 
+                    $total = 0;
+                    foreach ($_SESSION['cart'] as $item_id => $item): 
+                        $total += $item['price'] * $item['quantity'];
+                        
+                        // Fetch the image URL from the $items array
+                        $image_url = isset($items[$item_id]['image_url']) ? $items[$item_id]['image_url'] : '';
+                    ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($item['name']); ?></td>
+                        <td>$<?php echo number_format($item['price'], 2); ?></td>
+                        <td><?php echo $item['quantity']; ?></td>
+                        <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                        <td>
+                            <?php if (!empty($image_url)): ?>
+                                <img src="<?php echo htmlspecialchars($image_url); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="item-image">
+                            <?php else: ?>
+                                <span>No image available</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <tr>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td><strong>$<?php echo number_format($total, 2); ?></strong></td>
+                        <td></td>
+                    </tr>
+                </table>
 
-            <form class="checkout-form" method="post" action="">
-                <h2>Checkout</h2>
-                <label for="customer_name">Name:</label>
-                <input type="text" id="customer_name" name="customer_name" required>
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-                <input type="submit" name="checkout" value="Complete Purchase">
-            </form>
+                <form class="checkout-form" method="post" action="">
+                    <h2>Checkout</h2>
+                    <div class="payment-options">
+                        <label>
+                            <input type="radio" name="payment_method" value="cash" checked onchange="toggleCardDetails()"> Cash on Delivery
+                        </label>
+                        <label>
+                            <input type="radio" name="payment_method" value="card" onchange="toggleCardDetails()"> Card Payment
+                        </label>
+                    </div>
+                    <div id="card-details">
+                        <label for="card_number">Card Number:</label>
+                        <input type="text" id="card_number" name="card_number">
+                        <label for="expiry_date">Expiry Date:</label>
+                        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv">
+                    </div>
+                    <label for="customer_name">Name:</label>
+                    <input type="text" id="customer_name" name="customer_name" required>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                    <input type="submit" name="checkout" value="Complete Purchase">
+                </form>
+            <?php else: ?>
+                <p class="empty-cart">Your cart is empty. <a href="products.php">Continue shopping</a></p>
+            <?php endif; ?>
         <?php else: ?>
-            <p class="empty-cart">Your cart is empty. <a href="products.php">Continue shopping</a></p>
+            <div class="thank-you">
+                <h2>Thank you for your purchase!</h2>
+                <p>Your order has been received and will be processed soon.</p>
+            </div>
         <?php endif; ?>
         
         <a href="products.php" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Shop
         </a>
     </div>
+
+    <script>
+        function toggleCardDetails() {
+            var cardDetails = document.getElementById('card-details');
+            var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            cardDetails.style.display = paymentMethod === 'card' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
